@@ -1,5 +1,6 @@
 package com.tpe.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -8,6 +9,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -47,4 +50,6 @@ public class Student {
     private LocalDateTime createDate = LocalDateTime.now();
 
 
+    @OneToMany(mappedBy = "student") //iliski sahibi demek
+    private List<Book> books = new ArrayList<>();
 }
